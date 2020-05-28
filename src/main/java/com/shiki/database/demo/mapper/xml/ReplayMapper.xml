@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shiki.database.demo.mapper.ReplayMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.shiki.database.demo.entity.Replay">
+        <id column="replay_id" property="replayId" />
+        <result column="replay_cast_id" property="replayCastId" />
+        <result column="replay_live_id" property="replayLiveId" />
+        <result column="replay_url" property="replayUrl" />
+        <result column="replay_sort" property="replaySort" />
+        <result column="replay_time" property="replayTime" />
+        <result column="create_time" property="createTime" />
+        <result column="is_del" property="del" />
+        <result column="delete_time" property="deleteTime" />
+    </resultMap>
+
+</mapper>

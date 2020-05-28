@@ -1,0 +1,28 @@
+server:
+  port: 9591
+spring:
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: Fish&Chips161728
+    #本地环境
+    url: jdbc:mysql://106.15.74.23:3306/live-stream?characterEncoding=utf8
+  redis:
+    password:
+    host: 127.0.0.1
+    port: 6379
+    database: 1
+    #    pool:
+    #      max-active: 8
+    #      max-wait: -1
+    #      max-idle: 8
+    #      min-idle: 0
+    timeout: 1000000
+#debug: true
+mybatis-plus:
+  global-config:
+    db-config:
+      logic-delete-field: del  #全局逻辑删除字段值 3.3.0开始支持，详情看下面。
+      logic-delete-value: 1 # 逻辑已删除值(默认为 1)
+      logic-not-delete-value: 0 # 逻辑未删除值(默认为 0)

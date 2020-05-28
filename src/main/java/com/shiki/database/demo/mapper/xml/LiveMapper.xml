@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shiki.database.demo.mapper.LiveMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.shiki.database.demo.entity.Live">
+        <id column="live_id" property="liveId" />
+        <result column="live_cast_id" property="liveCastId" />
+        <result column="live_img" property="liveImg" />
+        <result column="live_url" property="liveUrl" />
+        <result column="live_vip_level" property="liveVipLevel" />
+        <result column="live_sort" property="liveSort" />
+        <result column="live_introduction" property="liveIntroduction" />
+        <result column="live_start_time" property="liveStartTime" />
+        <result column="live_end_time" property="liveEndTime" />
+        <result column="live_show" property="liveShow" />
+        <result column="create_time" property="createTime" />
+        <result column="is_del" property="del" />
+        <result column="delete_time" property="deleteTime" />
+    </resultMap>
+
+</mapper>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shiki.database.demo.mapper.UserMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.shiki.database.demo.entity.User">
+        <id column="user_id" property="userId" />
+        <result column="user_mark" property="userMark" />
+        <result column="user_wechat_unionID" property="userWechatUnionid" />
+        <result column="photo_src" property="photoSrc" />
+        <result column="user_name" property="userName" />
+        <result column="user_vip_level" property="userVipLevel" />
+        <result column="user_type" property="userType" />
+        <result column="create_time" property="createTime" />
+        <result column="is_del" property="del" />
+        <result column="delete_time" property="deleteTime" />
+    </resultMap>
+
+</mapper>
