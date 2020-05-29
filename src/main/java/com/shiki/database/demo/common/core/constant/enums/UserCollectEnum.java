@@ -1,4 +1,4 @@
-package com.shiki.database.demo.common.htzb.enums.dbtpye;
+package com.shiki.database.demo.common.core.constant.enums;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.shiki.database.demo.common.core.exception.EnumTypeNotFindException;

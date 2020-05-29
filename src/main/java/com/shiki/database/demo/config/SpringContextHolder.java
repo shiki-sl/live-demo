@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.shiki.database.demo.common.core.util;
+package com.shiki.database.demo.config;
 
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;

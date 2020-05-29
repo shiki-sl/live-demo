@@ -1,7 +1,10 @@
 package com.shiki.database.demo.service;
 
-import com.shiki.database.demo.entity.Banner;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.shiki.database.demo.common.core.util.R;
+import com.shiki.database.demo.entity.Banner;
 
 /**
  * <p>
@@ -11,6 +14,15 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @author shiki
  * @since 2020-05-28
  */
-public interface IBannerService extends IService<Banner> {
+public interface
+IBannerService extends IService<Banner> {
 
+    /**
+     * 缓存测试
+     * @param page
+     * @return
+     */
+    IPage<Banner> getBanner(Page<Banner> page);
+
+    String hello();
 }
