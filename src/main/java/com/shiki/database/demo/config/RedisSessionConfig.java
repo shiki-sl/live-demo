@@ -27,10 +27,9 @@ public class RedisSessionConfig extends RedisHttpSessionConfiguration {
                               @Value("${redis.session.maxInactiveIntervalInSeconds}") Integer maxInactiveIntervalInSeconds) {
 //        Property
         super.setRedisNamespace(StringUtils.isEmpty(redisNamespace) ? DEFAULT_NAMESPACE : redisNamespace);
+        super.setCleanupCron(StringUtils.isEmpty(cleanupCron) ? DEFAULT_CLEANUP_CRON : cleanupCron);
         super.setMaxInactiveIntervalInSeconds(
                 maxInactiveIntervalInSeconds == null || maxInactiveIntervalInSeconds <= 0 ? 600 : maxInactiveIntervalInSeconds);
-        super.setCleanupCron(StringUtils.isEmpty(cleanupCron) ?
-                DEFAULT_CLEANUP_CRON : cleanupCron);
         log.info("redisNamespace:" + redisNamespace);
         log.info("cleanupCron:" + cleanupCron);
         log.info("maxInactiveIntervalInSeconds:" + maxInactiveIntervalInSeconds);

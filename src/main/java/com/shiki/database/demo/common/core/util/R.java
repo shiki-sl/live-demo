@@ -46,7 +46,7 @@ public class R<T> implements Serializable {
 
 	@Getter
 	@Setter
-	private Boolean success = true;
+	private boolean success = true;
 
 	@Getter
 	@Setter
