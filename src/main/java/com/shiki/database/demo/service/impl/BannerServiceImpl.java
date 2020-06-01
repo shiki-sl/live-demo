@@ -29,7 +29,7 @@ public class BannerServiceImpl extends ServiceImpl<BannerMapper, Banner> impleme
 
     @Cacheable(cacheNames = "banner", key = "'banner:current:'+#page.current+'size:'+#page.size")
     @Override
-    public IPage<Banner> getBanner(Page<Banner> page) {
+    public IPage<Banner> getBanner(IPage<Banner> page) {
         log.debug("current:" + page.getCurrent() + "\n" + "size:" + page.getSize());
         return this.page(page);
     }

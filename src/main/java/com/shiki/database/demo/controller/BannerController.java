@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.Map;
@@ -40,8 +39,8 @@ public class BannerController {
     private IBannerService bannerService;
 
     @GetMapping("/page")
-    public R<IPage<Banner>> selectPage(Integer current, Integer size, HttpSession session) {
-        IPage<Banner> page = bannerService.getBanner(new Page<Banner>(current == null ? 1 : current, size == null ? 5 : size));
+    public R<IPage<Banner>> selectPage(Page<Banner> iPage, HttpSession session) {
+        IPage<Banner> page = bannerService.getBanner(iPage);
 
         Map<String, User> sessionInfoMap = new HashMap<>(1);
         session.setAttribute("user", User.builder().userName("shiki").build());
@@ -64,16 +63,7 @@ public class BannerController {
     }
 
     @GetMapping("/hello")
-    public R hello(HttpServletRequest request) {
-        String sessionId = request.getSession().getId();
-        String requestURI = request.getRequestURI();
-
-        System.out.println("sessionId = " + sessionId);
-        System.out.println("requestURI = " + requestURI);
-
-        Map<String, String> sessionInfoMap = new HashMap<>(2);
-        sessionInfoMap.put("sessionId", sessionId);
-        sessionInfoMap.put("requestURI", requestURI);
+    public R hello() {
         return R.<String>builder().data(bannerService.hello()).build();
     }
 
@@ -89,11 +79,6 @@ public class BannerController {
 
     @GetMapping("/check")
     public R check(User user) {
-        System.out.println("user = " + user);
-        return R.builder().data(user).build();
-    }
-    @GetMapping("/check1")
-    public R check1(Integer i,User user) {
         System.out.println("user = " + user);
         return R.builder().data(user).build();
     }

@@ -22,7 +22,7 @@ IBannerService extends IService<Banner> {
      * @param page
      * @return
      */
-    IPage<Banner> getBanner(Page<Banner> page);
+    IPage<Banner> getBanner(IPage<Banner> page);
 
     String hello();
 }
