@@ -1,8 +1,8 @@
+user:
+  key: user
+  storage-type: session
 redis:
   session:
-    redisNamespace: "live:test"
-    cleanupCron: "0 * * * * *"
-    maxInactiveIntervalInSeconds: 60
-#1590745026163
-#1590745080000
-#1590745620000
+    redis-namespace: "live:test"
+    cleanup-cron: "0 * * * * *"
+    max-inactive-interval-in-seconds: 600

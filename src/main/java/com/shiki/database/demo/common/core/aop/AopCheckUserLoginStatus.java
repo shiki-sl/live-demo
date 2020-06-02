@@ -1,6 +1,8 @@
 package com.shiki.database.demo.common.core.aop;
 
 import com.shiki.database.demo.common.core.constant.AspectConstant;
+import com.shiki.database.demo.common.core.constant.enums.CheckLoginTypeEnum;
+import com.shiki.database.demo.common.core.exception.EnumElementNotProcessException;
 import com.shiki.database.demo.common.core.util.R;
 import com.shiki.database.demo.entity.User;
 import lombok.AllArgsConstructor;
@@ -11,6 +13,7 @@ import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
@@ -31,10 +34,15 @@ import javax.servlet.http.HttpSession;
 @AllArgsConstructor
 public class AopCheckUserLoginStatus {
 
+    @Value("user.key")
+    private String key;
+
+    @Value("user.check-type")
+    private CheckLoginTypeEnum checkLoginTypeEnum;
+
     /**
-     * 匹配controller所有方法包含user的参数,有NotCheckUser注解的除外
-     * 同时由于是方法中只能包含一个变长数组的缘故,只做处理将user参数作为首位的方法
-     * 不需要自动校验用户登录状态时,只需将user不放在首位即可
+     * 匹配controller中包含user并且参数在首位的所有方法
+     * 同时由于是方法中只能包含一个变长数组的缘故,只做处理将user参数作为首位或末位的方法
      */
     @Pointcut(value = "execution(* com.shiki.database.demo.controller.*.*(..))&&(args(user,..))")
     public void userStatus(User user) {
@@ -47,12 +55,22 @@ public class AopCheckUserLoginStatus {
         String[] parameterNames = methodSignature.getParameterNames();
         Object[] paramValues = joinPoint.getArgs();
 
-        HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
-        HttpSession session = request.getSession();
-        User user = (User) session.getAttribute("user");
-        log.info("user=", user);
-        log.info("obj=", session.getAttribute("user"));
-        if (user == null || user.getUserId() == null) {
+        User user = null;
+        switch (checkLoginTypeEnum) {
+            case SESSION:
+                user = bySessionGetUser();
+                break;
+            case JWT:
+                user = byJWTGetUser();
+                break;
+            case REDIS:
+                user = byRedisGetUser();
+                break;
+            default:
+                throw new EnumElementNotProcessException(CheckLoginTypeEnum.class.getName()+"中元素"+checkLoginTypeEnum+"无法处理");
+        }
+        log.info("user={}", user);
+        if (user == null || user.getId() == null) {
             return R.builder().msg("用户未登录").build();
         } else {
             for (int i = 0; i < parameterNames.length && StringUtils.equalsIgnoreCase("user", parameterNames[i]); i++) {
@@ -61,6 +79,22 @@ public class AopCheckUserLoginStatus {
         }
 
         return joinPoint.proceed(paramValues);
+    }
+
+    private User byRedisGetUser() {
+        return null;
+    }
+
+    private User byJWTGetUser() {
+        return null;
+    }
+
+    private User bySessionGetUser() {
+        User user;
+        HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
+        HttpSession session = request.getSession();
+        user = (User) session.getAttribute("user");
+        return user;
     }
 
 }

@@ -16,13 +16,13 @@
  */
 package ${package}.${moduleName}.controller;
 
+import lombok.AllArgsConstructor;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.shiki.database.demo.common.core.util.R;
 import com.shiki.database.demo.common.log.annotation.SysLog;
 import ${package}.${moduleName}.entity.${className};
 import ${package}.${moduleName}.service.${className}Service;
-import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 

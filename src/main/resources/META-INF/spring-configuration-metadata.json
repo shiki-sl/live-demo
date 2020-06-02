@@ -1,0 +1,51 @@
+{
+  "groups": [
+    {
+      "name": "redis.session",
+      "type": "com.shiki.database.demo.config.properties.RedisSessionConfig",
+      "sourceType": "com.shiki.database.demo.config.properties.RedisSessionConfig"
+    },
+    {
+      "name": "user",
+      "type": "com.shiki.database.demo.config.properties.CheckUserTypeConfig",
+      "sourceType": "com.shiki.database.demo.config.properties.CheckUserTypeConfig"
+    }
+  ],
+  "properties": [
+    {
+      "name": "redis.session.cleanup-cron",
+      "type": "java.lang.String",
+      "description": "redis中每隔多久清除一次过期session",
+      "sourceType": "com.shiki.database.demo.config.properties.RedisSessionConfig",
+      "defaultValue": ""
+    },
+    {
+      "name": "redis.session.max-inactive-interval-in-seconds",
+      "type": "java.lang.Integer",
+      "description": "session过期时长",
+      "sourceType": "com.shiki.database.demo.config.properties.RedisSessionConfig",
+      "defaultValue": 600
+    },
+    {
+      "name": "redis.session.redis-namespace",
+      "type": "java.lang.String",
+      "description": "redis-session在redis中的命名空间",
+      "sourceType": "com.shiki.database.demo.config.properties.RedisSessionConfig",
+      "defaultValue": ""
+    },
+    {
+      "name": "user.key",
+      "type": "java.lang.String",
+      "description": "取得用户信息的key 根据userId取数据则key应为userId 从session中取数据则key为session.getAttribute(key)中的key 默认为user",
+      "sourceType": "com.shiki.database.demo.config.properties.CheckUserTypeConfig",
+      "defaultValue": "user"
+    },
+    {
+      "name": "user.storage-type",
+      "type": "com.shiki.database.demo.common.core.constant.enums.CheckLoginTypeEnum",
+      "description": "用户信息存储位置,默认session",
+      "sourceType": "com.shiki.database.demo.config.properties.CheckUserTypeConfig"
+    }
+  ],
+  "hints": []
+}

@@ -22,7 +22,8 @@ import com.baomidou.mybatisplus.extension.activerecord.Model;
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-#if(${hasBigDecimal})
+import lombok.NoArgsConstructor;
+  #if(${hasBigDecimal})
 import java.math.BigDecimal;
 #end
 import java.io.Serializable;
@@ -39,7 +40,7 @@ import java.time.LocalDateTime;
 @Accessors(chain = true)
 @Builder
 @TableName("${tableName}")
-@Builder
+@NoArgsConstructor
 public class ${className} extends Model<${className}> {
 private static final long serialVersionUID = 1L;
 

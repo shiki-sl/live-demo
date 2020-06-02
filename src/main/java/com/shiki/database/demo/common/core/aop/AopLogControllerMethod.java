@@ -3,6 +3,7 @@ package com.shiki.database.demo.common.core.aop;
 import cn.hutool.core.exceptions.ExceptionUtil;
 import cn.hutool.json.JSONUtil;
 import com.shiki.database.demo.common.core.constant.AspectConstant;
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.Signature;
@@ -11,14 +12,12 @@ import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.core.annotation.Order;
+import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
-
 import java.io.Serializable;
 
 import static java.lang.System.currentTimeMillis;
@@ -30,6 +29,7 @@ import static java.lang.System.currentTimeMillis;
 @Aspect
 @Slf4j
 @Component
+@AllArgsConstructor
 @Order(AspectConstant.LOG_AOP)
 public class AopLogControllerMethod {
     /**
@@ -39,6 +39,8 @@ public class AopLogControllerMethod {
             "&& !execution(* com.shiki.database.demo.controller.*.*upload*(..))")
     public void log() {
     }
+
+    private ThreadPoolTaskExecutor logExecutor;
 
     @Around("log()")
     public Object logHandler(ProceedingJoinPoint joinPoint) throws Throwable {
