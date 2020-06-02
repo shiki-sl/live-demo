@@ -3,7 +3,6 @@ package com.shiki.database.demo.common.core.util;
 import lombok.experimental.UtilityClass;
 import org.apache.commons.lang3.StringUtils;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Map;
 import java.util.Objects;
@@ -15,15 +14,15 @@ import java.util.Objects;
  */
 @UtilityClass
 public class ParameterUtil {
-    public static boolean presenceParamIsEmpty(Object obj1) {
+    public boolean presenceParamIsEmpty(Object obj1) {
         return isNull(obj1);
     }
 
-    public static boolean presenceParamIsEmpty(Object obj1, Object obj2) {
+    public boolean presenceParamIsEmpty(Object obj1, Object obj2) {
         return isNull(obj1) || isNull(obj2);
     }
 
-    public static boolean presenceParamIsEmpty(Object obj1, Object obj2, Object obj3) {
+    public boolean presenceParamIsEmpty(Object obj1, Object obj2, Object obj3) {
         return isNull(obj1) || isNull(obj2) || isNull(obj3);
     }
 

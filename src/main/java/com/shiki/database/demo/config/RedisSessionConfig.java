@@ -22,9 +22,9 @@ public class RedisSessionConfig extends RedisHttpSessionConfiguration {
      * @param cleanupCron 注解定时清除过期session,默认值{@link ConfigConstants#DEFAULT_CLEANUP_CRON}
      * @param maxInactiveIntervalInSeconds 配置缓存时长
      */
-    public RedisSessionConfig(@Value("${redis.session.redisNamespace}") String redisNamespace,
-                              @Value("${redis.session.cleanupCron}") String cleanupCron,
-                              @Value("${redis.session.maxInactiveIntervalInSeconds}") Integer maxInactiveIntervalInSeconds) {
+    public RedisSessionConfig(@Value("${redis.session.redis-namespace}") String redisNamespace,
+                              @Value("${redis.session.cleanup-cron}") String cleanupCron,
+                              @Value("${redis.session.max-inactive-interval-in-seconds}") Integer maxInactiveIntervalInSeconds) {
 //        Property
         super.setRedisNamespace(StringUtils.isEmpty(redisNamespace) ? DEFAULT_NAMESPACE : redisNamespace);
         super.setCleanupCron(StringUtils.isEmpty(cleanupCron) ? DEFAULT_CLEANUP_CRON : cleanupCron);

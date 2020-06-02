@@ -29,6 +29,7 @@ import java.io.Serializable;
  * @author shiki
  * @date 2020/5/28 上午10:21
  */
+@Data
 @Builder
 @ToString
 @Accessors(chain = true)
@@ -36,8 +37,6 @@ import java.io.Serializable;
 public class R<T> implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@Getter
-	@Setter
 	private int code = CommonConstants.SUCCESS;
 
 	@Getter

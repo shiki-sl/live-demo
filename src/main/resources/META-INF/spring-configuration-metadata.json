@@ -2,8 +2,8 @@
   "groups": [
     {
       "name": "redis.session",
-      "type": "com.shiki.database.demo.config.properties.RedisSessionConfig",
-      "sourceType": "com.shiki.database.demo.config.properties.RedisSessionConfig"
+      "type": "com.shiki.database.demo.config.properties.RedisSessionYmlConfig",
+      "sourceType": "com.shiki.database.demo.config.properties.RedisSessionYmlConfig"
     },
     {
       "name": "user",
@@ -16,21 +16,21 @@
       "name": "redis.session.cleanup-cron",
       "type": "java.lang.String",
       "description": "redis中每隔多久清除一次过期session",
-      "sourceType": "com.shiki.database.demo.config.properties.RedisSessionConfig",
+      "sourceType": "com.shiki.database.demo.config.properties.RedisSessionYmlConfig",
       "defaultValue": ""
     },
     {
       "name": "redis.session.max-inactive-interval-in-seconds",
       "type": "java.lang.Integer",
       "description": "session过期时长",
-      "sourceType": "com.shiki.database.demo.config.properties.RedisSessionConfig",
+      "sourceType": "com.shiki.database.demo.config.properties.RedisSessionYmlConfig",
       "defaultValue": 600
     },
     {
       "name": "redis.session.redis-namespace",
       "type": "java.lang.String",
       "description": "redis-session在redis中的命名空间",
-      "sourceType": "com.shiki.database.demo.config.properties.RedisSessionConfig",
+      "sourceType": "com.shiki.database.demo.config.properties.RedisSessionYmlConfig",
       "defaultValue": ""
     },
     {

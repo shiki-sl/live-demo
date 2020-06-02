@@ -13,7 +13,7 @@ import org.springframework.context.annotation.Configuration;
 @AllArgsConstructor
 @Configuration
 @ConfigurationProperties(prefix = "redis.session")
-public class RedisSessionConfig {
+public class RedisSessionYmlConfig {
 
     /**
      * redis-session在redis中的命名空间

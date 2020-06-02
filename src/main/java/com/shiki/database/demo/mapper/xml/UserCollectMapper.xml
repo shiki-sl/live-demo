@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shiki.database.demo.mapper.UserCollectMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.shiki.database.demo.entity.UserCollect">
+        <id column="id" property="id" />
+        <result column="user_id" property="userId" />
+        <result column="live_id" property="liveId" />
+        <result column="column_id" property="columnId" />
+        <result column="type" property="type" />
+        <result column="is_del" property="del" />
+        <result column="created_at" property="createdAt" />
+        <result column="updated_at" property="updatedAt" />
+    </resultMap>
+
+</mapper>

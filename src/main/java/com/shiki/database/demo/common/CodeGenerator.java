@@ -240,7 +240,7 @@ public class CodeGenerator {
         // mapper xml 模板
         templateConfig.setXml("/template/Mapper.xml.vm");
         // controller 控制器模板
-        templateConfig.setController("/template/Controller.xml.vm");
+//        templateConfig.setController("/template/Controller.xml.vm");
 
         return templateConfig;
     }

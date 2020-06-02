@@ -1,6 +1,3 @@
-user:
-  key: user
-  storage-type: session
 redis:
   session:
     redis-namespace: "live:test"
